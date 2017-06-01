@@ -1,0 +1,18 @@
+Package: algoeval
+Title: Bayesian Algorithmic Evaluation
+Version: 0.1
+Authors@R: person("Robert", "Kubinec", email = "rmk7xy@virginia.edu", role = c("aut", "cre"))
+Description: A package for evaluating algorithms using Bayesian hierarchical models and LOO.
+Depends:
+    R (>= 3.1),
+    Rcpp (>= 0.12.7)
+Imports:
+    rstan (>= 2.13.2),
+    rstantools (>= 1.1.0),
+    methods (>= 3.3.1)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+LinkingTo: StanHeaders (>= 2.13.1), rstan (>= 2.13.2), BH (>= 1.62.0.1), Rcpp
+    (>= 0.12.7), RcppEigen (>= 0.3.2.9.0)
