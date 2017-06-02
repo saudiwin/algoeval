@@ -150,7 +150,7 @@ algo_pay <- function(obj=NULL) {
     spread(suffix,diff) %>% 
     filter(type=='profit') %>% 
     select(algo_type,mean) %>% 
-    mutate(mean_diff=1-DMwR::SoftMax(mean),normalized=mean_diff/sum(mean_diff),payout=obj$budget*normalized) %>% 
+    mutate(mean_diff=DMwR::SoftMax(mean),normalized=mean_diff/sum(mean_diff),payout=obj$budget*normalized) %>% 
     arrange(normalized)
   return(calc_amount)
 }
