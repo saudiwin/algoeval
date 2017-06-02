@@ -9,7 +9,8 @@ Depends:
 Imports:
     rstan (>= 2.13.2),
     rstantools (>= 1.1.0),
-    methods (>= 3.3.1)
+    methods (>= 3.3.1),
+    DMwR
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true

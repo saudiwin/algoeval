@@ -5,10 +5,10 @@
 \title{Plot Algorithms
 Function that generates plots showing either LOO (leave-one-out predictive density) for all algorithms or profit/loss figures for each of the algorithms.}
 \usage{
-algo_plot(input = NULL)
+algo_plot(obj = NULL, plot_type = "cash")
 }
 \arguments{
-\item{input}{A list as produced by the `algo_compare` function.}
+\item{plot_type}{"loo" for predictive density, "cash" for budget/profit differences}
 
-\item{plot_type}{"loo" for predictive density and "budget" for profit/loss}
+\item{input}{A list as produced by the `algo_compare` function.}
 }

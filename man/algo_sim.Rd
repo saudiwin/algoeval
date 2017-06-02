@@ -5,7 +5,7 @@
 \title{Simulate Algorithms
 Function that will produce example algorithms based on simulated data. The simulation assumes that the algorithms can be ranked on their average predictive performance for a binomial (0/1) distributed outcome. Coefficient values are on the logit scale.}
 \usage{
-algo_sim(N = 1000, algo_num = 3, algo_coefs = seq(0, 0.25, length.out =
+algo_sim(N = 1000, algo_num = 3, algo_coefs = seq(0, 0.5, length.out =
   algo_num), algo_errs = rep(0.25, algo_num), intercept = -1)
 }
 \arguments{

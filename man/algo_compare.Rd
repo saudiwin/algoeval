@@ -4,19 +4,15 @@
 \alias{algo_compare}
 \title{Compare Algorithms}
 \usage{
-algo_compare(algos = NULL, outcome = NULL, budget = 1000, revenue = 10,
-  compare_with = "full", MC = 0.25, int_price = 2)
+algo_compare(algos = NULL, outcome = NULL, budget = 10000, MC = 0.25,
+  int_price = 2)
 }
 \arguments{
 \item{algos}{algorithm input as a matrix with each column corresponding to one matrix.}
 
 \item{outcome}{outcome that the algorithms predict should be passsed in as a vector of the same length as the matrix.}
 
-\item{budget}{amount in dollars that the client has to spend}
-
-\item{revenue}{amount that the client will gain for each successful conversion (outcome==1)}
-
-\item{compare_with}{Should the comparison model be a "full" model or a "null" model with only an intercept?}
+\item{budget}{amount in dollars that the client has to spend on algorithms}
 
 \item{MC}{marginal cost of producing an additional unit for each outcome (constant value as a percentage of revenue)}
 

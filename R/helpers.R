@@ -44,7 +44,7 @@
 }
 
 #' Internal function for optimizing budgets
-.exp_revenue <- function(budget=NULL,out_data=NULL,N=NULL,MC=.25,int_price=2) {
+.exp_revenue <- function(budget=NULL,out_data=NULL,N=NULL,MC=.5,int_price=2) {
   out_data <- mutate(out_data,e_rev = outcome * (int_price + ((budget*soft_latent*10)/N) - ((budget*soft_latent)/N)^2))
   e_profit <- sum(out_data$e_rev) - budget - sum(out_data$e_rev)*MC
   return(e_profit)
@@ -53,7 +53,7 @@
 #' Internal function for calculating loo given two stanfit objects
 #' @import loo
 .loo_calc <- function(stanobj=NULL,outcome=NULL,algo_data=NULL,num_iters=NULL) {
-  out_log <- .get_log_lik(stan_sample=all_models[[x]],outcome=outcome,algo_data=algo_data,nwarmup=(num_iters)/2,niters=num_iters)
+  out_log <- .get_log_lik(stan_sample=stanobj,outcome=outcome,algo_data=algo_data,nwarmup=(num_iters)/2,niters=num_iters)
   mean_loo <- colMeans(out_log)
   # There is a problem with arithmetic underflow where very certain outcomes of the logit model come out as probability 1,
   # Which screws up the loo
@@ -79,9 +79,9 @@
 #' @import data.table
 .get_log_lik <- function(stan_sample=NULL,outcome=NULL,algo_data=NULL,nwarmup=NULL,
                         niters=NULL) {
-  
-  predictors <- rstan::extract(stan_sample,pars='theta_raw')[[1]][(nwarmup+1):niters,]
-  intercept <- rstan::extract(stan_sample,pars='alpha')[[1]][(nwarmup+1):niters]
+
+  predictors <- rstan::extract(stan_sample,pars='theta_raw')[[1]]
+  intercept <- rstan::extract(stan_sample,pars='alpha')[[1]]
   raw_predict <- algo_data %*% t(predictors)
   rm(predictors)
   raw_predict <- apply(raw_predict,1,function(x) x + intercept) %>% t
